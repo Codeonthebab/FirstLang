@@ -1,3 +1,4 @@
+<%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.boardone.BoardDAO"%>
@@ -6,22 +7,30 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ include file="view/color.jsp"%>
 
-<%!SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");%>
+<%!
+int pageSize = 5;
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+%>
 
 <%
+String pageNum = request.getParameter("pageNum");
+if(pageNum == null) {
+	pageNum="1";
+}
+int currentPage = Integer.parseInt(pageNum);
+int startRow = (currentPage - 1)*pageSize+1;
+int endRow = currentPage*pageSize;
 int count = 0;
 int number = 0;
 List<BoardVO> articleList = null;
-
 BoardDAO dbPro = BoardDAO.getInstance();
-
 // 전체 글 가져오기
 count = dbPro.getArticleCount();
 
 if (count > 0) { // 글이 존재할 경우
-	articleList = dbPro.getArticles(); // 글을 가져다가 아티클리스트에 저장
+	articleList = dbPro.getArticles(startRow,endRow); // 글을 가져다가 아티클리스트에 저장
 }
-number = count;
+number = count - (currentPage -1) * pageSize;
 %>
 
 <!DOCTYPE html>
@@ -68,14 +77,25 @@ number = count;
 			%>
 			<tr height="30">
 			<td align="center" width="50" ><%=number-- %></td>
-			<td width="250"><a href = "content.jsp? num=<%=article.getNum() %>&pageNum=1">
+			<td width="250">
+			<%
+			int wid=0;
+			if (article.getDepth() > 0 ) {
+				wid  = 5 * (article.getDepth());
+			%>
+			<img src ="<%=request.getContextPath()%>/Images/level.gif" width="<%=wid%>" height="16">
+			<img src="<%=request.getContextPath()%>/Images/re.gif">
+			<%} else { %>
+			<img src = "<%=request.getContextPath()%>/Images/level.gif" width="<%=wid%>" height="16">
+			<%} %>
+			<a href = "content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
 			<%= article.getSubject() %>
 			</a>
 			<% if(article.getReadcount() >= 5) { %>
-			<img src = "img/hot.gif" border="0" height="16">
+			<img src = "<%=request.getContextPath()%>/Images/hot.gif" border="0" height="16">
 			<%} %>
 			</td>
-			<td align = "center" width="100"> <a hre="mailto:<%=article.getEmail() %>">
+			<td align = "center" width="100"> <a href="mailto:<%=article.getEmail() %>">
 			<%=article.getWriter() %>
 			</a>
 			</td>
@@ -92,6 +112,33 @@ number = count;
 			<%} %>
 		</table>
 		<%
+		}
+		%>
+		
+		<%
+		if (count > 0 ) {
+			int pageBlock = 5;
+			int imsi = count % pageSize == 0? 0:1;
+			int pageCount = count / pageSize + imsi;
+			
+			int startPage = (int)((currentPage-1)/pageBlock)*pageBlock+1;
+			int endPage = startPage+pageBlock-1;
+			
+			if (startPage > pageBlock) {
+				%>
+				<a href="list.jsp?pageNum=<%=startPage-pageBlock %>"> [이전] </a>
+				<%
+			} // end [이전] if
+			for (int i = startPage; i<= endPage; i++) {
+			%>
+			<a href="list.jsp?pageNum=<%=i %>"> [<%=i %>] </a>
+			<%
+			} // end for
+			if (endPage < pageCount) {
+			%>
+				<a href="list.jsp?pageNum=<%=startPage+pageBlock %>"> [다음] </a>
+			<%
+			}// end [다음] if
 		}
 		%>
 	</div>
