@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>ServletProject</display-name>
+	<servlet>
+		<servlet-name>myHello</servlet-name>
+		<servlet-class>com.test.HelloServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>myHello</servlet-name>
+		<url-pattern>/Hello</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>myResponse</servlet-name>
+		<servlet-class>com.test.ResponseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>myResponse</servlet-name>
+		<url-pattern>/Response</url-pattern>
+	</servlet-mapping>
+
+<!-- 
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.test.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+ -->
+ 
+	<servlet>
+		<servlet-name>Sport</servlet-name>
+		<servlet-class>com.test.SportServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Sport</servlet-name>
+		<url-pattern>/Sport</url-pattern>
+	</servlet-mapping>
+
+<servlet>
+		<servlet-name>VisitList</servlet-name>
+		<servlet-class>com.bbs.VisitList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VisitList</servlet-name>
+		<url-pattern>/VisitList</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>Member</servlet-name>
+		<servlet-class>com.test.MemberServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Member</servlet-name>
+		<url-pattern>/Member</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<param-name>Manager</param-name>
+		<param-value>JungSub Kim</param-value>
+	</context-param>
+	<context-param>
+		<param-name>company</param-name>
+		<param-value>GlobalIn(주)</param-value>
+	</context-param>
+	
+	<servlet>
+		<servlet-name>initParameter</servlet-name>
+		<servlet-class>com.sample.initParameter</servlet-class>
+		<init-param>
+			<param-name>tel</param-name>
+			<param-value>010-1111-1111</param-value>
+		</init-param>
+		<init-param>
+			<param-name>email</param-name>
+			<param-value>globalin@naver.com</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>initParameter</servlet-name>
+		<url-pattern>/initParameter</url-pattern>
+	</servlet-mapping>
+	
+	<error-page>
+	<error-code>404</error-code>
+	<location>/error/error404.jsp</location>
+	</error-page>
+	
+	<error-page>
+	<error-code> 500 </error-code>
+	<location>/error/error500.jsp</location>
+	</error-page>
+	
+	<error-page>
+	<exception-type> java.lang.NullPointerException </exception-type>
+	<location>/error/errorNullPointer.jsp</location>
+	</error-page>
+	
+	<servlet>
+		<servlet-name>XYPlotServlet</servlet-name>
+		<servlet-class>com.chart.XYPlotServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>XYPlotServlet</servlet-name>
+		<url-pattern>/XYPlotServlet</url-pattern>
+	</servlet-mapping>
+	
+	<jsp-config>
+	<taglib>
+	<taglib-uri>/WEB-INF/tlds/el-functions.tld</taglib-uri>
+	<taglib-location>
+	/WEB-INF/tlds/el-functions.tld
+	</taglib-location>
+	</taglib>
+	</jsp-config>
+	
+</web-app>
