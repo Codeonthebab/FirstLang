@@ -22,17 +22,10 @@
 		<url-pattern>/Response</url-pattern>
 	</servlet-mapping>
 
-<!-- 
-	<servlet>
-		<servlet-name>Login</servlet-name>
-		<servlet-class>com.test.LoginServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Login</servlet-name>
-		<url-pattern>/Login</url-pattern>
-	</servlet-mapping>
- -->
- 
+	<!-- <servlet> <servlet-name>Login</servlet-name> <servlet-class>com.test.LoginServlet</servlet-class> 
+		</servlet> <servlet-mapping> <servlet-name>Login</servlet-name> <url-pattern>/Login</url-pattern> 
+		</servlet-mapping> -->
+
 	<servlet>
 		<servlet-name>Sport</servlet-name>
 		<servlet-class>com.test.SportServlet</servlet-class>
@@ -42,7 +35,7 @@
 		<url-pattern>/Sport</url-pattern>
 	</servlet-mapping>
 
-<servlet>
+	<servlet>
 		<servlet-name>VisitList</servlet-name>
 		<servlet-class>com.bbs.VisitList</servlet-class>
 	</servlet>
@@ -69,7 +62,7 @@
 		<param-name>company</param-name>
 		<param-value>GlobalIn(주)</param-value>
 	</context-param>
-	
+
 	<servlet>
 		<servlet-name>initParameter</servlet-name>
 		<servlet-class>com.sample.initParameter</servlet-class>
@@ -86,22 +79,20 @@
 		<servlet-name>initParameter</servlet-name>
 		<url-pattern>/initParameter</url-pattern>
 	</servlet-mapping>
-	
+
 	<error-page>
-	<error-code>404</error-code>
-	<location>/error/error404.jsp</location>
+		<error-code>404</error-code>
+		<location>/error/error404.jsp</location>
 	</error-page>
-	
+
+	<!-- <error-page> <error-code> 500 </error-code> <location>/error/error500.jsp</location> 
+		</error-page> -->
+
 	<error-page>
-	<error-code> 500 </error-code>
-	<location>/error/error500.jsp</location>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/error/errorNullPointer.jsp</location>
 	</error-page>
-	
-	<error-page>
-	<exception-type> java.lang.NullPointerException </exception-type>
-	<location>/error/errorNullPointer.jsp</location>
-	</error-page>
-	
+
 	<servlet>
 		<servlet-name>XYPlotServlet</servlet-name>
 		<servlet-class>com.chart.XYPlotServlet</servlet-class>
@@ -110,14 +101,35 @@
 		<servlet-name>XYPlotServlet</servlet-name>
 		<url-pattern>/XYPlotServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<jsp-config>
-	<taglib>
-	<taglib-uri>/WEB-INF/tlds/el-functions.tld</taglib-uri>
-	<taglib-location>
-	/WEB-INF/tlds/el-functions.tld
-	</taglib-location>
-	</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/tlds/el-functions.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/el-functions.tld</taglib-location>
+		</taglib>
 	</jsp-config>
-	
+
+	<servlet>
+		<servlet-name>ControllerURI</servlet-name>
+		<servlet-class>mvc.Controller</servlet-class>
+		<init-param>
+			<param-name>propertyConfig</param-name>
+			<param-value>Command.properties</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControllerURI</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>myControl</servlet-name>
+		<servlet-class>com.mvcmem.ControlServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>myControl</servlet-name>
+		<url-pattern>*.mdo</url-pattern>
+	</servlet-mapping>
+
+
 </web-app>
