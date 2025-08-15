@@ -1,0 +1,66 @@
+@charset "UTF-8";
+BODY {
+	FONT-SIZE : 9pt;
+	COLOR: BLACK;
+	background-color: PINK;
+	LINE-HEIGHT: 160%;
+	FONT-FAMILY: 궁서, VERDANA, Ms Mincho;
+}
+
+TD {
+	FONT-SIZE : 9pt;
+	COLOR: BLACK;
+	background-color: PINK;
+	LINE-HEIGHT: 160%;
+	FONT-FAMILY: 궁서, VERDANA, Ms Mincho;
+}
+
+SELECT {
+	FONT-SIZE : 9pt;
+	COLOR: BLACK;
+	background-color: PINK;
+	LINE-HEIGHT: 160%;
+	FONT-FAMILY: 궁서, VERDANA, Ms Mincho;
+}
+
+DIV {
+	FONT-SIZE : 9pt;
+	COLOR: BLACK;
+	background-color: PINK;
+	LINE-HEIGHT: 160%;
+	FONT-FAMILY: 궁서, VERDANA, Ms Mincho;
+}
+
+FORM {
+	FONT-SIZE : 9pt;
+	COLOR: BLACK;
+	background-color: PINK;
+	LINE-HEIGHT: 160%;
+	FONT-FAMILY: 궁서, VERDANA, Ms Mincho;
+}
+
+TEXTAREA {
+	border-right: 1px solid #999999;
+	border-top: 1px solid #999999;
+	border-left: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	font-size: 9px;
+	color: black;
+	font-family: Ms Mincho;
+	background-color: white;
+}
+
+INPUT {
+	border-right: 1px solid #999999;
+	border-top: 1px solid #999999;
+	border-left: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	font-size: 9px;
+	color: black;
+	font-family: Ms Mincho;
+	background-color: white;
+}
+
+a:link {text-decoration: none; color: #797979;}
+a:hover {text-decoration: yes; color: #69ccff;}
+a:visited {text-decoration: none; color: #7324ff;}
