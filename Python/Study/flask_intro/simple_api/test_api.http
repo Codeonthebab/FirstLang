@@ -1,0 +1,27 @@
+### 모든 몬스터 조회 (GET)
+GET http://127.0.0.1:5000/monsters
+
+### 새로운 몬스터 추가 (POST)
+POST http://127.0.0.1:5000/monsters
+Content-Type: application/json
+
+{
+    "name": "좀비",
+    "level": 4,
+    "element": "죽은인간"
+}
+
+### 특정 몬스터 정보 수정 (PUT)
+PUT http://127.0.0.1:5000/monsters/2
+Content-Type: application/json
+
+{
+    "name": "벌래무리",
+    "level": 8,
+    "element": "곤충류"
+}
+
+### 특정 몬스터 정보 수정 (DELETE)
+DELETE http://127.0.0.1:5000/monsters/1
+
+
