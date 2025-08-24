@@ -1,4 +1,6 @@
 import MonsterCard from './components/MonsterCard';
+import Counter from './components/Counter';
+import NameForm from './components/NameForm';
 import './App.css'
 
 function App() {
@@ -10,6 +12,10 @@ function App() {
     <MonsterCard name="파이어 드래곤" level={15} type="불" ability="화염 방사" />
     <MonsterCard name="아이스 퀸" level={7} type="얼음" ability="빙결" />
     <MonsterCard name="전기 쥐" level={3} type="전기" ability="감전" />
+    <hr/> 
+    <Counter /> 
+    <hr/> 
+    <NameForm />
   </div>
   );
 }
