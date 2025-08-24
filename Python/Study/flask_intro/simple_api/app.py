@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 # Flask app 생성
 app = Flask(__name__)
+CORS(app)
 
 # SQLAlchemy 설정 : 어떤 데이터 베이스에 연결할지 설정
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///monsters.db'
