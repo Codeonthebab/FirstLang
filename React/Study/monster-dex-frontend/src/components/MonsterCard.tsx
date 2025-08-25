@@ -1,5 +1,7 @@
 // Props 타입 정의
 // 해당 컴포넌트가 어떤 종류의 Props를 받을지 정의합니다. (*타입 정의)
+import { useContext } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
 
 type MonsterCardProps = {
     id: number; // id prop 추가
@@ -11,8 +13,11 @@ type MonsterCardProps = {
 };
 
 function MonsterCard(props: MonsterCardProps) {
+
+    const theme = useContext(ThemeContext);
+
     return (
-        <div className="monster-card">
+        <div className={`monster-card ${theme}`}>
             <h2>{props.name}</h2>
             <p>Level: {props.level}</p>
             <p>Type: {props.type}</p> {/* type prop 표시 추가 */}

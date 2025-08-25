@@ -2,6 +2,7 @@ import MonsterCard from './components/MonsterCard';
 //import Counter from './components/Counter';
 //import NameForm from './components/NameForm';
 import { useState, useEffect } from 'react';
+import { ThemeContext } from './contexts/ThemeContext';
 import './App.css'
 
 type Monster = {
@@ -13,6 +14,20 @@ type Monster = {
 }
 
 function App() {
+
+  // 'light' 또는 'dark' 상태 관리
+  const [theme, setTheme] = useState('light');
+
+  // useEffect로 Hook 추가 해서 바디클래스 적용
+  useEffect(()=> {
+    // theme 상태가 변경할 때마다 document의 body 클래스 적용
+    document.body.className=theme;
+  }, [theme]); // [theme] : theme 상태가 변경될 때마다 실행하라는 의미
+
+  // 테마 토글 함수
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  }
 
   // 몬스터 배열 정의
   const [monsters, setMonsters] = useState<Monster[]>([]);
@@ -45,11 +60,21 @@ function App() {
   const [searchMonster, setSearchMonster] = useState<string>('');
 
   return (
-  <div>
-    <h1>📖몬스터 도감📖</h1>
-   
-    <input
-      type="text"
+
+  // ThemeContext.Provider로 하위 컴포넌트를 감사도록 함
+  // value prop으로 공유하고 싶은 데이터를 전달시킴
+  <ThemeContext.Provider value={theme}>
+  {/* 프로바이더에 감싸진 하위 컴포넌트는 전부 value{theme}를 props로 받음*/}
+  <div className={`app-container ${theme}`}>
+    <button onClick={toggleTheme}>
+      {theme === 'light' ? '🌙다크 모드' : '☀️라이트 모드'}
+    </button>
+  
+    <div>
+      <h1>📖몬스터 도감📖</h1>
+
+      <input
+        type="text"
       placeholder='몬스터 이름 검색'
       value={searchMonster}
       onChange={(e) => setSearchMonster(e.target.value)}
@@ -75,9 +100,12 @@ function App() {
         />
       ))}
       </div>
+      </div>
+
     {/* <Counter /> */}
     {/* <NameForm /> */}
   </div>
+  </ThemeContext.Provider>
   );
 }
 
