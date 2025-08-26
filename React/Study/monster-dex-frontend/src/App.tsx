@@ -3,6 +3,7 @@ import MonsterCard from './components/MonsterCard';
 //import NameForm from './components/NameForm';
 import { useState, useEffect } from 'react';
 import { ThemeContext } from './contexts/ThemeContext';
+import AddMonsterForm from './components/AddMonsterForm';
 import './App.css'
 
 type Monster = {
@@ -14,6 +15,35 @@ type Monster = {
 }
 
 function App() {
+
+  // 몬스터 추가 함수
+  const handleAddMonster = async (monsterData: 
+    {
+      name:string;
+      level:number;
+      element:string;
+      type:string;
+    })=> {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/monsters', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          // javascript 객체를 JSON 문자열로 변환
+          body: JSON.stringify(monsterData),
+        });
+        const newMonster = await response.json();
+        
+        if (!response.ok) {
+          throw new Error('몬스터 추가에 실패하였습니다.');
+        }
+
+        setMonsters([...monsters, newMonster]);
+      } catch (error) {
+        console.error('몬스터 추가 중 오류 발생 : ', error);
+      }
+    };
 
   // 'light' 또는 'dark' 상태 관리
   const [theme, setTheme] = useState('light');
@@ -73,6 +103,8 @@ function App() {
     <div>
       <h1>📖몬스터 도감📖</h1>
 
+      <AddMonsterForm onAddMonster={handleAddMonster} />
+      <hr/>
       <input
         type="text"
       placeholder='몬스터 이름 검색'
