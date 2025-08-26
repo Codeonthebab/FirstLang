@@ -97,7 +97,7 @@ function App() {
   {/* 프로바이더에 감싸진 하위 컴포넌트는 전부 value{theme}를 props로 받음*/}
   <div className={`app-container ${theme}`}>
     <button onClick={toggleTheme}>
-      {theme === 'light' ? '🌙다크 모드' : '☀️라이트 모드'}
+      {theme === 'light' ? '☀️라이트 모드' : '🌙다크 모드'}
     </button>
   
     <div>
@@ -128,7 +128,7 @@ function App() {
           level={monster.level}
           element={monster.element}
           type={monster.type}
-          onDelete={() => {}} // 삭제 핸들러를 prop으로 전달, 지금은 임시로 비움 {/*handleDelete*/}
+          onDelete={handleDelete} // 삭제 핸들러를 prop으로 전달, 지금은 임시로 비움 {/*handleDelete*/}
         />
       ))}
       </div>

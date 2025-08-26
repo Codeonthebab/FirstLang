@@ -43,10 +43,10 @@ function AddMonsterForm({onAddMonster} : AddMonsterFormProps) {
     return (
         <form onSubmit={handleSubmit}>
             <h3>새로운 몬스터 추가</h3>
-            <input type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="이름"/>
-            <input type="text" value={level} onChange={(e)=> setLevel(e.target.value)} placeholder="레벨"/>
-            <input type="text" value={element} onChange={(e)=> setElement(e.target.value)} placeholder="속성"/>
-            <input type="text" value={type} onChange={(e)=> setType(e.target.value)} placeholder="타입"/>
+            <input type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="이름"/> <br/>
+            <input type="text" value={level} onChange={(e)=> setLevel(e.target.value)} placeholder="레벨"/> <br/>
+            <input type="text" value={element} onChange={(e)=> setElement(e.target.value)} placeholder="속성"/> <br/>
+            <input type="text" value={type} onChange={(e)=> setType(e.target.value)} placeholder="타입"/> <br/> <br/>
             <button type="submit">추가</button>
         </form>
     );
