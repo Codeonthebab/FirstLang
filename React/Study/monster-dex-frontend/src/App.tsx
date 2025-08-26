@@ -15,6 +15,31 @@ type Monster = {
 }
 
 function App() {
+  // 몬스터 배열 정의
+  const [monsters, setMonsters] = useState<Monster[]>([]);
+
+  // 몬스터 정보 서버 업데이트 함수
+  const handleUpdateMonster = async (id: number, updatedData: {
+    name: string;
+    level: number;
+    element: string;
+    type: string;
+  }) => {
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/monsters/${id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(updatedData)
+      });
+      const updatedMonster = await response.json();
+      // 화면에 몬스터 목록 최신 업데이트 시킴
+      setMonsters(monsters.map(monster => 
+        monster.id === id ? updatedMonster : monster
+      ));
+    } catch (error) {
+      console.error('몬스터 업데이트 중 오류 발생 : ', error);
+    }
+  };
 
   // 몬스터 추가 함수
   const handleAddMonster = async (monsterData: 
@@ -59,8 +84,7 @@ function App() {
     setTheme(theme === 'light' ? 'dark' : 'light');
   }
 
-  // 몬스터 배열 정의
-  const [monsters, setMonsters] = useState<Monster[]>([]);
+  
   // useEffect를 사용, 컴포넌트가 처음 마운트될 때 데이터 가져옴
   useEffect(() => {
     const fetchMonsters = async () => {
@@ -80,7 +104,16 @@ function App() {
   }, []); // 의존성 배열을 빈 배열([])로 설정, 1호만 실행
 
   // 삭제 함수 정의
-  const handleDelete = (idToDelete: number) => {
+  const handleDelete =  async(idToDelete: number) => {
+
+    try {
+      await fetch(`http://127.0.0.1:5000/monsters/${idToDelete}`,
+        { method: 'DELETE' });
+        const updatedMonsters = monsters.filter((monster) => monster.id !== idToDelete);
+        setMonsters(updatedMonsters);
+    } catch (error) {
+      console.error('몬스터 삭제 중 오류 발생 : ', error);
+    }
     // filter 함수 사용, 삭제할 id와 다른 몬스터들만 남겨 배열 만듦
     const updatedMonsters = monsters.filter((monster) => monster.id !== idToDelete);
     setMonsters(updatedMonsters); // 상태 업데이트
@@ -129,6 +162,7 @@ function App() {
           element={monster.element}
           type={monster.type}
           onDelete={handleDelete} // 삭제 핸들러를 prop으로 전달, 지금은 임시로 비움 {/*handleDelete*/}
+          onUpdate={handleUpdateMonster} // 업데이트 핸들러를 prop으로 전달
         />
       ))}
       </div>
