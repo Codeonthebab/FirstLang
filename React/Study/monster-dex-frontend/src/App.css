@@ -1,8 +1,6 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+ --background-color: #ffffff;
+ --text-color: #242424;
 }
 
 .logo {
@@ -37,6 +35,56 @@
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+body.white {
+  color: #242424;
+  background-color: white;
+}
+
+body.dark {
+  --background-color: #242424;
+  --text-color: white;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  /* #root의 배경은 투명하게 하여 body의 배경색이 보이도록 합니다. */
+  background-color: transparent; 
+}
+
+/*반응형 웹 페이지를 해보자!*/
+.monster-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem; /* 카드 사이의 간격 */
+  margin-top: 2rem; /* 상단 여백 */
+}
+
+/* 태블릿 사이즈 : 화면 너비가 768px 이상일 때 적용되게끔 */
+@media (min-width: 768px) {
+  .monster-grid {
+    /* 2개의 열로 카드를 표시*/
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* DeskTop Size : 화면 너비가 1024px 이상일 때 적용되게끔 */
+@media (min-width: 1024px) {
+  .monster-grid {
+    /* 4개의 열로 카드를 표시*/
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
