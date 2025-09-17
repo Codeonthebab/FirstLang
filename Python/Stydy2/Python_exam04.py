@@ -32,5 +32,5 @@ for i in range(1, 500):
         turtle.pencolor('violet')
 
     turtle.circle(i)
-    
+
 turtle.done()
