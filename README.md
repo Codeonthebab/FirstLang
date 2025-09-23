@@ -49,17 +49,29 @@
 
 ### 🚀 대표 프로젝트 / 主なプロジェクト (My Main Project)
 
-#### [한국어]
+1. 道記 (Michiki) - 여행 계획 및 기록 공유 서비스 (*道記(Michiki) - 旅行計画および記録共有サービス)
+##### [한국어]
 * **[道記 (Michiki) - 여행 계획 및 기록 공유 서비스](https://github.com/TeamCodeGears/michki-frontend)**
   * **개요:** 친구들과의 여행을 지도 위에서 직관적으로 계획하고 공유할 수 있는 웹 서비스입니다.
   * **담당:** 프론트엔드 (UI/UX 설계, React를 이용한 화면 구현, )
   * **주요 기술:** React, Spring, Web socket, Google Maps API, dnd-kit
-
-#### [日本語]
+##### [日本語]
 * **[道記 (Michiki) - 旅行計画・記録共有サービス](https://github.com/TeamCodeGears/michki-frontend)**
   * **概要:** 友人との旅行計画を地図上で直感的に作成・共有できるWebサービスです。
   * **担当:** フロントエンド (UI/UX設計、Reactによる画面実装)
   * **使用技術:** React, Spring, Web Socket, Google Maps API, dnd-kit
+
+2. ThreadBoard - 익명 게시판 서비스 (1인 프로젝트) (*ThreadBoard - 匿名掲示板サービス(1人プロジェクト))
+##### [한국어]
+* **[ThreadBoard - 익명 게시판 서비스 (1인 프로젝트)](https://github.com/Codeonthebab/threadboard)**
+  * **개요:** Full-Stack 개발 역량 강화를 위해 진행한 개인 프로젝트입니다. JWT 인증을 포함한 기본적인 CRUD 기능을 갖춘 게시판 서비스입니다.
+  * **담당:** 프론트엔드 및 백엔드 전체 (Full-Stack)
+  * **주요 기술:** React, TypeScript, Python, Flask, PostgreSQL, SQLAlchemy, i18next, JWT
+##### [日本語]
+* **[ThreadBoard - 匿名掲示板サービス(1人プロジェクト)](https://github.com/Codeonthebab/threadboard)**
+  * **개요:** フルスタック開発能力の向上のために進めた個人プロジェクトです。JWT認証を含む基本的なCRUD機能を備えた掲示板サービスです。
+  * **담당:** フロントエンド及びバックエンド全体 (Full-Stack)
+  * **주요 기술:** React, TypeScript, Python, Flask, PostgreSQL, SQLAlchemy, i18next, JWT
 
 ---
 
