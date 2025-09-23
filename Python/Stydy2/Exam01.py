@@ -16,7 +16,7 @@ trainTupleList = [('토마스', 5), ('헨리', 8), ('에드워드', 9), ('에밀
                   ('토마스', 4), ('헨리', 7), ('토마스', 3), ('에밀리', 8),
                   ('퍼시', 5), ('고든', 13)]
 
-trainDic, trainList={}, []
+trainDic, trainList= {}, []
 
 tepTup = None
 totalRank, currentRank= 1,1
