@@ -33,6 +33,8 @@
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 
+#### **Git Graghp**
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Codeonthebab&show_icons=true&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
 ---
 
 ### 📂 디렉토리 구성 / ディレクトリ構成 (Directory Structure)
