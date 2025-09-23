@@ -49,7 +49,7 @@
 
 ### 🚀 대표 프로젝트 / 主なプロジェクト (My Main Project)
 
-1. 道記 (Michiki) - 여행 계획 및 기록 공유 서비스 (*道記(Michiki) - 旅行計画および記録共有サービス)
+###1. 道記 (Michiki) - 여행 계획 및 기록 공유 서비스 (*道記(Michiki) - 旅行計画および記録共有サービス)
 ##### [한국어]
 * **[道記 (Michiki) - 여행 계획 및 기록 공유 서비스](https://github.com/TeamCodeGears/michki-frontend)**
   * **개요:** 친구들과의 여행을 지도 위에서 직관적으로 계획하고 공유할 수 있는 웹 서비스입니다.
@@ -61,7 +61,7 @@
   * **担当:** フロントエンド (UI/UX設計、Reactによる画面実装)
   * **使用技術:** React, Spring, Web Socket, Google Maps API, dnd-kit
 
-2. ThreadBoard - 익명 게시판 서비스 (1인 프로젝트) (*ThreadBoard - 匿名掲示板サービス(1人プロジェクト))
+### 2. ThreadBoard - 익명 게시판 서비스 (1인 프로젝트) (*ThreadBoard - 匿名掲示板サービス(1人プロジェクト))
 ##### [한국어]
 * **[ThreadBoard - 익명 게시판 서비스 (1인 프로젝트)](https://github.com/Codeonthebab/threadboard)**
   * **개요:** Full-Stack 개발 역량 강화를 위해 진행한 개인 프로젝트입니다. JWT 인증을 포함한 기본적인 CRUD 기능을 갖춘 게시판 서비스입니다.
