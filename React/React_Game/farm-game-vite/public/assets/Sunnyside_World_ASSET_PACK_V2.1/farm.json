@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"farm.json"
-        }
-    },
  "height":50,
  "infinite":false,
  "layers":[
