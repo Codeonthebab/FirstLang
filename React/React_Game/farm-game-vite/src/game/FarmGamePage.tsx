@@ -28,6 +28,7 @@ class GameScene extends Phaser.Scene {
       const groundLayer = map.createLayer('Ground', tileset, 0, 0);
       
       // 마우스 클릭 이벤트 감지 리스너
+      if (groundLayer) {
       this.input.on('pointerdown', (pointer : Phaser.Input.Pointer) => {
         const worldPoint = pointer.positionToCamera(this.cameras.main) as Phaser.Math.Vector2;
         const tile = groundLayer?.getTileAtWorldXY(worldPoint.x , worldPoint.y);
@@ -40,7 +41,7 @@ class GameScene extends Phaser.Scene {
           }
         }
       });
-
+      }
     }
   }
 }
