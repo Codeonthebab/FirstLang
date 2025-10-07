@@ -20,22 +20,31 @@ class GameScene extends Phaser.Scene {
     );
   }
   create() {
-    const map = this.make.tilemap({ key: 'farm_map' });
-
-    // Tiled에서 타일셋에 부여한 이름('Terrain')과 preload의 이미지 키('terrain_tiles')를 연결
-    const tileset = map.addTilesetImage(
-      'terrain', 
-      'terrain_tiles'
-    );
+    const map = this.make.tilemap({ key: "farm_map" });
+    const tileset = map.addTilesetImage('terrain', 'terrain_tiles');
 
     // Tiled에서 만든 레이어 이름('Ground')을 사용
     if (tileset) {
-      map.createLayer('Ground', tileset, 0, 0);
+      const groundLayer = map.createLayer('Ground', tileset, 0, 0);
+      
+      // 마우스 클릭 이벤트 감지 리스너
+      this.input.on('pointerdown', (pointer : Phaser.Input.Pointer) => {
+        const worldPoint = pointer.positionToCamera(this.cameras.main) as Phaser.Math.Vector2;
+        const tile = groundLayer?.getTileAtWorldXY(worldPoint.x , worldPoint.y);
+
+        if (tile) {
+          console.log(`클릭한 타일 좌표 : (${tile.x}, ${tile.y}), 타일 인덱스 : ${tile.index}`);
+
+          if (tile.index === 25) {
+            groundLayer.putTileAt(43, tile.x, tile.y);
+          }
+        }
+      });
+
     }
   }
 }
 
-// React 컴포넌트 코드는 수정할 필요 없습니다.
 const FarmGamePage: React.FC = () => {
   const gameInstance = useRef<Phaser.Game | null>(null);
   useEffect(() => {
