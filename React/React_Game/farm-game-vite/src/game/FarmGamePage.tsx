@@ -3,9 +3,12 @@ import Phaser from "phaser";
 
 class GameScene extends Phaser.Scene {
   
+  // player 컨테이너
+  private playerContainer!: Phaser.GameObjects.Container;
   // 괭이 'hoe', 씨앗 'seed' 저장 변수
   private currentTool: "hoe" | "seed" = "hoe";
   private toolIcon!: Phaser.GameObjects.Image;
+  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
 
   constructor() {
     super("GameScene");
@@ -24,6 +27,18 @@ class GameScene extends Phaser.Scene {
       "farm_map",
       "assets/Sunnyside_World_ASSET_PACK_V2.1/farm.json"
     );
+    
+    // 캐릭터 파츠별 소환
+    this.load.spritesheet (
+      "base_dig",
+      "assets/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/DIG/base_dig_strip13.png",
+      {frameWidth: 16, frameHeight: 16 }
+    );
+    this.load.spritesheet (
+      "bowlhair_dig",
+      "assets/Sunnyside_World_ASSET_PACK_V2.1/Sunnyside_World_Assets/Characters/Human/DIG/bowlhair_dig_strip13.png",
+      {frameWidth: 16, frameHeight: 16}
+    );
   }
   create() {
     const map = this.make.tilemap({ key: "farm_map" });
@@ -32,6 +47,34 @@ class GameScene extends Phaser.Scene {
     // Tiled에서 만든 레이어 이름('Ground')을 사용
     if (tileset) {
       const groundLayer = map.createLayer("Ground", tileset, 0, 0);
+
+      // 플레이어 컨테이너
+      this.anims.create({
+        key: 'player_dig_base',
+        frames: this.anims.generateFrameNumbers('base_dig', {start:0, end:12}),
+        frameRate: 10,
+        repeat: -1
+      });
+      this.anims.create({
+        key: 'player_dig_hair',
+        frames: this.anims.generateFrameNumbers('bowlhair_dig', {start: 0, end: 12}),
+        frameRate: 10,
+        repeat: -1
+      });
+
+      const body = this.add.sprite(0, 0, 'base_dig');
+      const hair = this.add.sprite(0,0, 'bowlhair_dig');
+
+      // 캐릭터 컨테이너 (*파츠 포함)
+      this.playerContainer = this.add.container(400, 300, [body, hair]);
+      this.physics.world.enable(this.playerContainer);
+      (this.playerContainer.body as Phaser.Physics.Arcade.Body).setSize(16,20).setOffset(8,12);
+
+      // 캐릭터 애니메이션
+      body.play('player_dig_base');
+      hair.play('player_dig_hair');
+
+      this.cursors = this.input.keyboard!.createCursorKeys();
 
       // UI, 상태 관리 로직, 마우스 리스너
       if (groundLayer) {
@@ -90,6 +133,10 @@ class GameScene extends Phaser.Scene {
       }
     }
   }
+
+  update() {
+
+  }
 }
 
 const FarmGamePage: React.FC = () => {
@@ -104,6 +151,13 @@ const FarmGamePage: React.FC = () => {
       height: 600,
       parent: "phaser-game-container",
       backgroundColor: "#000000",
+      physics : {
+        default : 'arcade',
+        arcade : {
+          gravity : { x : 0, y : 0 },
+          debug: false
+        }
+      },
       scene: [GameScene],
     };
     gameInstance.current = new Phaser.Game(config);
